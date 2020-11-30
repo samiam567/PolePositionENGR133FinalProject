@@ -1,4 +1,4 @@
-
+Run the following commands in the cmd:
 
 pip install numpy
 
