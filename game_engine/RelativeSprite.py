@@ -86,7 +86,7 @@ class RelativeSprite(Sprite):
 
             #convert to polar
      
-            angle = atan2(self.displayXPosition,-self.displayYPosition); # the angle of this object relative to the camera
+            angle = atan2(self.displayYPosition,self.displayXPosition); # the angle of this object relative to the camera
             
             radius = sqrt(self.displayXPosition**2 + self.displayYPosition**2) # thie distance this object is away from the camera
 
@@ -100,7 +100,6 @@ class RelativeSprite(Sprite):
 
             self.rotation -= self.camera.getRotation(); # add internal rotation to match camera
 
-            self.rotation += 90;
 
             #add zero offsets
             self.rotation += self.zeroRotation;

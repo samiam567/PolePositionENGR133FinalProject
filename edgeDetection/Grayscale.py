@@ -19,7 +19,9 @@ def grayscale(im):
     #define the grayscale value of each pixel and set the corresponding value in teh blank array equal to the grayscale brightness
     for x in range(0,len(im)):
         for y in range(0,len(im[0])):
-            i = 0.2126 * im[x,y,0] + 0.7152 * im[x,y,1] + 0.0722 * im[x,y,2]
+            #i = 0.2126 * im[x,y,0] + 0.7152 * im[x,y,1] + 0.0722 * im[x,y,2]
+            #i = 0.5 * im[x,y,0] + 0.5 * im[x,y,2];
+            i = 0.3 * im[x,y,0] + 3 * im[x,y,1] + 3 * im[x,y,2]
             gray[x,y] = i
             
     #Show the user the shape of the image

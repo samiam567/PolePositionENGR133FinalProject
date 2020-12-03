@@ -66,14 +66,9 @@ class Racetrack(RelativeSprite):
             color = self.racetrackRoad.get_at((xPixelPos,yPixelPos)); # get the color at that pixel position
             
             brightness = 0.2126 * color.r + 0.7152 * color.g + 0.0722 * color.b; # convert to brightness
-            print(brightness);
             return brightness < 200; # return whether that brightness is  dark enough to be the road (picture values are either 0 for on track or 254.999... for off track)
-        except IndexError:
-            print("off picture");
-            return True;
-
-            
-            #return False;
+        except IndexError: # we are outside the picture and definitely not on the track
+            return False;
             
     # returns true if the passed coordinate is the edge of the track
     def isTrackEdge(self,x,y):

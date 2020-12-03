@@ -27,7 +27,7 @@ background_position = [0, 0]
 spinSpeed = 5;
 rotation = 0;
 
-player_image = pygame.image.load("../assets/racecar.png").convert();
+player_image = pygame.image.load("../assets/racecar2.png").convert();
 imgSizeX = 200;
 imgSizeY = 200;
 

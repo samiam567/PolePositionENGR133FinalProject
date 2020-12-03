@@ -98,7 +98,12 @@ class Sprite(Object2D):
         self.updateDisplayImage(); 
         
         
-        
+    #rotates the picture, but not the actual sprite object
+    def rotatePicture(self,angle):
+        self.img = pygame.transform.rotate(self.img,angle);
+        self.xSize = self.imgScale * self.img.get_width();
+        self.ySize = self.imgScale * self.img.get_height();
+
     def paint(self,screen):
         # paint the Sprite, adjusting so that the xPosition,yPosition are the coordinates of the center
         screen.blit(self.displayImg,[self.xPosition-self.showSizeX/2, self.yPosition-self.showSizeY/2]);
