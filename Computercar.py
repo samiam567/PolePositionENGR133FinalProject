@@ -60,8 +60,8 @@ class Computercar(Racecar.Racecar):
             self.sensorLength = 100;
         else:
             self.racecarAcceleration = 0.1;
-            self.kP = 0.3;
-            self.kD = 0.3;
+            self.kP = 0.5;
+            self.kD = 0.4;
             self.racecarSpeed = 10;
             self.sensorLength = 50;
 
@@ -73,7 +73,7 @@ class Computercar(Racecar.Racecar):
         #PID variables
         self.prevError = 1;
 
-        
+    # update the car    
     def update(self):
         super(Computercar,self).update();
 
@@ -105,10 +105,9 @@ class Computercar(Racecar.Racecar):
 
 
 
-
+    # drive the car according to my PD controller
     def AICarControl(self):
         position = 0;
-        pError = 0;
 
         position = self.getPosition();
         forwardAngle = -90 + self.getRotation();
@@ -118,28 +117,44 @@ class Computercar(Racecar.Racecar):
         '''
 
         #front right angle sensor
-        frontRightAngleDist = raytrace(position,forwardAngle+self.sensorAngle,self.sensorLength,self.racetrack.isOnTrack,False);
+        frontRightAngleDist = raytrace(position,forwardAngle+self.sensorAngle,self.sensorLength,self.racetrack.isTrackEdge,True);
 
 
         #front left angle sensor 
-        frontLeftAngleDist = raytrace(position,forwardAngle-self.sensorAngle,self.sensorLength,self.racetrack.isOnTrack,False);
+        frontLeftAngleDist = raytrace(position,forwardAngle-self.sensorAngle,self.sensorLength,self.racetrack.isTrackEdge,True);
         
         #left sensor
-        leftDist = raytrace(position,forwardAngle-90,self.sensorLength,self.racetrack.isOnTrack,False);
+        leftDist = raytrace(position,forwardAngle-90,self.sensorLength,self.racetrack.isTrackEdge,True);
         
         #right sensor
-        rightDist = raytrace(position,forwardAngle+90,self.sensorLength,self.racetrack.isOnTrack,False);
+        rightDist = raytrace(position,forwardAngle+90,self.sensorLength,self.racetrack.isTrackEdge,True);
         
+
+        '''
+        find our position on the track
+        '''
+
         #our relative position on the track
         position = frontRightAngleDist+rightDist-leftDist-frontLeftAngleDist;
         error = position;
 
+
+        '''
+        use our track position to calculate a correction
+        '''
+
         # calculate the PID calculation 
         PIDOutput = self.kP*error + self.kD * (error-self.prevError);
+
+
+        '''
+        execute the correction
+        '''
 
         # output the steering
         self.setAngularVelocity(PIDOutput);
         
+        # set the previous error to the current error for the next loop
         self.prevError = error;
 
 

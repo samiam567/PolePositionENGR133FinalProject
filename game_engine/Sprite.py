@@ -59,7 +59,9 @@ class Sprite(Object2D):
 
         '''
         scale the image
+        (compensate for the corners sticking out from the bounding box by scaling the image that much larger)
         '''
+
         # calculate how far away from the center the corners would be
         cornerAngle = atan(self.ySize/self.xSize); 
 
@@ -93,6 +95,7 @@ class Sprite(Object2D):
         
         self.displayImg = pygame.transform.scale(self.displayImg, (self.showSizeX,self.showSizeY));
     
+    #updates this Sprite
     def update(self):
         super(Sprite,self).update(); # call the update of the parent class
         self.updateDisplayImage(); 

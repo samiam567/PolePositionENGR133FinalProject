@@ -36,7 +36,10 @@ player_image = pygame.transform.scale(player_image, (imgSizeX,imgSizeY));
 player_image.set_colorkey(BLACK)
  
 done = False
- 
+
+print("click the screen ;)");
+
+print("just go ahead and do it");
 while not done:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:

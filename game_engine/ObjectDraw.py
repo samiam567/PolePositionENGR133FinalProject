@@ -16,7 +16,7 @@ from game_engine.Sprite import Sprite;
 from game_engine.GameEngineToolbox import checkType;
 from game_engine.GameObject import GameObject;
 
-# updates and draws objects
+# Controller for the game engine. Updates and draws the objects on a Pygame window
 '''
 Class members:
 screenSizeX - int - x size of the screen
@@ -55,6 +55,9 @@ class ObjectDraw():
         
         self.clock = pygame.time.Clock(); # get the clock
 
+        
+        #set up variables
+
         self.objects = []; # create the objects list
 
         self.done = True;
@@ -79,9 +82,6 @@ class ObjectDraw():
     def start(self):
         if (self.done): #make sure we aren't already running
             self.done = False;
-            
-         #   self.gameThread = ObjectDrawThread(self);
-         #   self.gameThread.start();
         else:
             print("engine already running");
 
@@ -141,17 +141,6 @@ class ObjectDraw():
     def getKeysPressed(self):
         return self.keysPressed;
 
-'''
-class ObjectDrawThread(Thread):
-    def __init__(self,objectDraw):
-        super(ObjectDrawThread,self).__init__();
-        checkType(objectDraw,ObjectDraw,"objectDraw must be an ObjectDraw");
-        self.objectDraw = objectDraw;
-        
-    def run(self):
-        while(not self.objectDraw.done): 
-            self.objectDraw.run();
-'''
 '''
 ===============================================================================
 ACADEMIC INTEGRITY STATEMENT

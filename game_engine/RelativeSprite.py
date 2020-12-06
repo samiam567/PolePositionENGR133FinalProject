@@ -9,7 +9,6 @@ Assignment Information
 	Team ID:        LC4-5 
 ===============================================================================
 '''
-#from game_engine.GameObject import GameObject
 from game_engine.Object2D import Object2D
 from game_engine.ObjectDraw import ObjectDraw
 from game_engine.GameEngineToolbox import checkType

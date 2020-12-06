@@ -77,11 +77,13 @@ class Racetrack(RelativeSprite):
         xPixelPos = int((x-self.xPosition+self.xSize/2)/self.imgScale);
         yPixelPos = int((y-self.yPosition+self.ySize/2)/self.imgScale);
 
-        color = self.racetrackEdges.get_at((xPixelPos,yPixelPos)); # get the color at that pixel position
-        
-        brightness = 0.2126 * color.r + 0.7152 * color.g + 0.0722 * color.b; # convert to brightness
-
-        return brightness < 200; # return whether that brightness is  dark enough to be the road (picture values are either 0 for on track or 254.999... for off track)
+        try:
+            color = self.racetrackRoad.get_at((xPixelPos,yPixelPos)); # get the color at that pixel position
+            
+            brightness = 0.2126 * color.r + 0.7152 * color.g + 0.0722 * color.b; # convert to brightness
+            return brightness > 150; # return whether that brightness is bright enough to be a track edge (picture values are either 0 for not edge or 254.999... for edge)
+        except IndexError: # we are outside the picture and definitely not on the edge of the track
+            return False;
 
 
 
