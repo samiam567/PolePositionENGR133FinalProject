@@ -25,8 +25,6 @@ racetrackSet - boolean - whether we have set a racetrack yet
 
 class Racecar(RelativeSprite):
     def __init__(self,objectDraw,isFirstPerson,scale,racecar_source):
-        
-
         screenXSize = objectDraw.screenSizeX;
         screenYSize = objectDraw.screenSizeY;
             

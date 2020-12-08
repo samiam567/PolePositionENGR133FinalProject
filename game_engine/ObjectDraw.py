@@ -34,6 +34,7 @@ backgroundColor - tuple - the background color for the screen. Painted before al
 
 class ObjectDraw():
     
+    #initializes the objectdraw
     def __init__(self,screenSizeX, screenSizeY):
 
         #make sure types check out and assign screen size class members
@@ -138,6 +139,7 @@ class ObjectDraw():
         assert issubclass(gameObject.__class__, GameObject); # make sure the object we are adding is a child of GameObject
         self.objects.append(gameObject);
 
+    #returns the keys that the user has pressed
     def getKeysPressed(self):
         return self.keysPressed;
 

@@ -36,7 +36,7 @@ def checkType(variable, requiredTypes, errorMessage = "Incorrect type", raiseErr
         else:
             return True;
 
-
+# will make all objects bounce off the borders of the screen
 def border_bounce(objectDraw):
     for current_object in objectDraw.objects:
        

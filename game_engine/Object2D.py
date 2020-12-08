@@ -30,6 +30,7 @@ ySize - int - the size of this object in the y dimension
 '''
 
 class Object2D(GameObject):
+    # initialize the object
     def __init__(self,name,xPosition,yPosition,xSize,ySize):
         super(Object2D,self).__init__(name);
 

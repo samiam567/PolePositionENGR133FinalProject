@@ -12,9 +12,10 @@ Assignment Information
 from game_engine.GameEngineToolbox import checkType
 from math import pi,sin,cos
 
-# sends a ray starting from the given position and at the given angle and returns the distance when the passed function is true or the max length is exeeded
 
 '''
+sends a ray starting from the given position and at the given angle and returns the distance when the passed function is true or the max length is exeeded
+
 params:
 startpos - tuple[float] - the position to start the ray at
 angle - float - the angle (in degrees)
